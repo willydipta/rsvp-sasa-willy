@@ -176,8 +176,8 @@
                 <label for="jumlahHadir">Jumlah yang akan Hadir (termasuk Anda):</label>
                 <select id="jumlahHadir" name="entry.830815033">
                     <option value="">Pilih jumlah</option>
-                    <option value="1 orang">1 orang</option> <!-- Changed value to "1 orang" -->
-                    <option value="2 orang">2 orang</option> <!-- Changed value to "2 orang" -->
+                    <option value="1 orang">1 orang</option>
+                    <option value="2 orang">2 orang</option>
                 </select>
             </div>
 
@@ -195,6 +195,7 @@
             const hadirTidakRadio = document.getElementById('hadirTidak');
             const jumlahHadirContainer = document.getElementById('jumlahHadirContainer');
             const jumlahHadirSelect = document.getElementById('jumlahHadir');
+            const rsvpForm = document.getElementById('rsvpForm'); // Get the form element
 
             function toggleJumlahHadir() {
                 if (hadirYaRadio.checked) {
@@ -214,18 +215,31 @@
             hadirYaRadio.addEventListener('change', toggleJumlahHadir);
             hadirTidakRadio.addEventListener('change', toggleJumlahHadir);
 
-            // Optional: Add a confirmation message after submission (since we're submitting directly to GForm endpoint)
-            // Note: This form submits directly to Google Forms, so you won't get a direct success message
-            // from Google Forms itself. You might want to redirect to a custom thank you page or show a modal.
-            const rsvpForm = document.getElementById('rsvpForm');
+            // Handle form submission asynchronously
             rsvpForm.addEventListener('submit', function(event) {
-                // You can add a custom success message here before submitting
-                // For example, using a simple alert (though custom modals are better for user experience)
-                // alert('Terima kasih atas konfirmasi kehadiran Anda!');
-                // Or redirect to a custom thank you page
-                // window.location.href = 'URL_THANK_YOU_PAGE.html';
-                // If you want to show a message without redirecting, you'd need to use fetch API
-                // to submit the form data asynchronously. For simplicity, direct POST is used here.
+                event.preventDefault(); // Prevent default form submission (which would redirect to Google Form)
+
+                const formData = new FormData(rsvpForm);
+                const googleFormUrl = rsvpForm.action; // Get the Google Form submission URL
+
+                // Show a loading indicator (optional)
+                // You can add a div with a loading spinner or message here
+
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Important for cross-origin form submission to Google Forms
+                })
+                .then(response => {
+                    // Even with no-cors, we can't inspect the response, but we assume success
+                    // Redirect to your custom thank you page
+                    window.location.href = 'https://willydipta.github.io/rsvp-sasa-willy/thankyou.html';
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    // Handle error: show an error message to the user
+                    alert('Terjadi kesalahan saat mengirim konfirmasi. Mohon coba lagi.');
+                });
             });
         });
     </script>
