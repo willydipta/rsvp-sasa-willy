@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP Undangan Pernikahan</title>
+    <!-- Link Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for the form */
@@ -152,21 +154,24 @@
         <h2>Konfirmasi Kehadiran Undangan Pernikahan Sasa & Willy</h2>
         <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeBBerEMjCWv7iyKvEs91X2ZiM1c2971BVbK8sZRbWwUb6HGg/formResponse" method="POST">
 
+            <!-- Nama Lengkap -->
             <label for="namaLengkap">Nama Lengkap:</label>
             <input type="text" id="namaLengkap" name="entry.882493965" placeholder="Masukkan nama lengkap Anda" required>
 
+            <!-- Hadir atau Tidak -->
             <label>Apakah Anda akan Hadir?</label>
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="entry.887368289" value="Ya, saya akan hadir" id="hadirYa" required>
+                    <input type="radio" name="entry.887368289" value="Ya" id="hadirYa" required> <!-- Changed value from "Ya, saya akan hadir" to "Ya" -->
                     Ya, saya akan hadir
                 </label>
                 <label>
-                    <input type="radio" name="entry.887368289" value="Tidak, saya tidak bisa hadir" id="hadirTidak">
+                    <input type="radio" name="entry.887368289" value="Tidak" id="hadirTidak"> <!-- Changed value from "Tidak, saya tidak bisa hadir" to "Tidak" -->
                     Tidak, saya tidak bisa hadir
                 </label>
             </div>
 
+            <!-- Jumlah Hadir (Tersembunyi Awalnya) -->
             <div id="jumlahHadirContainer" class="hidden-field">
                 <label for="jumlahHadir">Jumlah yang akan Hadir (termasuk Anda):</label>
                 <select id="jumlahHadir" name="entry.830815033">
@@ -176,6 +181,7 @@
                 </select>
             </div>
 
+            <!-- Pesan / Ucapan (Opsional) -->
             <label for="pesanUcapan">Pesan / Ucapan (Opsional):</label>
             <textarea id="pesanUcapan" name="entry.602733102" rows="4" placeholder="Tulis pesan atau ucapan untuk kami..."></textarea>
 
