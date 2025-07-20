@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Undangan Pernikahan</title>
+    <!-- Link Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the form */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0f2fe; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add padding for mobile view */
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Max width for larger screens */
+            box-sizing: border-box;
+            border: 1px solid #90cdf4; /* Light blue border */
+        }
+        h2 {
+            text-align: center;
+            color: #2b6cb0; /* Darker blue for heading */
+            margin-bottom: 40px; /* Increased line spacing below title */
+            font-weight: 700; /* Bold heading */
+            font-size: 1.875rem; /* Larger font size */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600; /* Semi-bold label */
+            color: #4a5568; /* Darker grey for labels */
+        }
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%; /* Full width */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0; /* Light grey border */
+            border-radius: 8px; /* Rounded input fields */
+            box-sizing: border-box; /* Include padding in width */
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3182ce; /* Blue border on focus */
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2); /* Light blue shadow on focus */
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        .radio-group label {
+            display: inline-flex; /* Use inline-flex for better alignment of radio button and text */
+            align-items: center;
+            margin-right: 20px;
+            cursor: pointer;
+            font-weight: 400; /* Normal weight for radio labels */
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+            /* Custom radio button styling (optional, can be more complex with pseudo-elements) */
+            appearance: none; /* Hide default radio button */
+            width: 18px;
+            height: 18px;
+            border: 2px solid #3182ce; /* Blue border */
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        .radio-group input[type="radio"]:checked {
+            background-color: #3182ce; /* Blue fill when checked */
+            border-color: #3182ce;
+        }
+        .radio-group input[type="radio"]:checked::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        button {
+            background-color: #3182ce; /* Vibrant blue button */
+            color: white;
+            padding: 40px 80px; /* Updated padding: top/bottom 40px, left/right 80px */
+            border: 1px solid #ccc; /* Thin gray outline */
+            border-radius: 8px;
+            cursor: pointer;
+            width: auto; /* Changed from 100% to auto */
+            display: block; /* To center it with margin auto */
+            margin: 0 auto; /* Center the button */
+            font-size: 1.125rem; /* Larger font size for button */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2b6cb0; /* Darker blue on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            border-color: #999; /* Slightly darker gray on hover */
+        }
+        button:active {
+            transform: translateY(0); /* Press effect */
+        }
+        .hidden-field {
+            display: none; /* Initially hide the field */
+        }
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                border-radius: 10px;
+            }
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 30px; /* Adjusted for smaller screens */
+            }
+            input[type="text"], select, textarea { /* Adjusted for select */
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+            button {
+                padding: 20px 40px; /* Adjusted padding for smaller screens */
+                font-size: 1rem;
+            }
+            .radio-group label {
+                margin-right: 15px;
+                margin-bottom: 10px; /* Add some space between stacked radio options */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Konfirmasi Kehadiran Undangan Pernikahan Sasa & Willy</h2>
+        <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeBBerEMjCWv7iyKvEs91X2ZiM1c2971BVbK8sZRbWwUb6HGg/formResponse" method="POST">
+
+            <!-- Nama Lengkap -->
+            <label for="namaLengkap">Nama Lengkap:</label>
+            <input type="text" id="namaLengkap" name="entry.882493965" placeholder="Masukkan nama lengkap Anda" required>
+
+            <!-- Hadir atau Tidak -->
+            <label>Apakah Anda akan Hadir?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="entry.887368289" value="Ya, saya akan hadir" id="hadirYa" required>
+                    Ya, saya akan hadir
+                </label>
+                <label>
+                    <input type="radio" name="entry.887368289" value="Tidak, saya tidak bisa hadir" id="hadirTidak">
+                    Tidak, saya tidak bisa hadir
+                </label>
+            </div>
+
+            <!-- Jumlah Hadir (Tersembunyi Awalnya) -->
+            <div id="jumlahHadirContainer" class="hidden-field">
+                <label for="jumlahHadir">Jumlah yang akan Hadir (termasuk Anda):</label>
+                <select id="jumlahHadir" name="entry.830815033">
+                    <option value="">Pilih jumlah</option>
+                    <option value="1">1 orang</option>
+                    <option value="2">2 orang</option>
+                </select>
+            </div>
+
+            <!-- Pesan / Ucapan (Opsional) -->
+            <!-- Catatan: entry.YOUR_MESSAGE_ENTRY_ID perlu diganti dengan ID asli dari GForm Anda jika ada. -->
+            <!-- Jika tidak ada, Anda bisa menghapus field ini atau membiarkannya. -->
+            <label for="pesanUcapan">Pesan / Ucapan (Opsional):</label>
+            <textarea id="pesanUcapan" name="entry.YOUR_MESSAGE_ENTRY_ID" rows="4" placeholder="Tulis pesan atau ucapan untuk kami..."></textarea>
+
+            <button type="submit">Kirim</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hadirYaRadio = document.getElementById('hadirYa');
+            const hadirTidakRadio = document.getElementById('hadirTidak');
+            const jumlahHadirContainer = document.getElementById('jumlahHadirContainer');
+            const jumlahHadirSelect = document.getElementById('jumlahHadir'); // Changed to select element
+
+            function toggleJumlahHadir() {
+                if (hadirYaRadio.checked) {
+                    jumlahHadirContainer.style.display = 'block';
+                    jumlahHadirSelect.setAttribute('required', 'required'); // Make it required if 'Ya' is selected
+                } else {
+                    jumlahHadirContainer.style.display = 'none';
+                    jumlahHadirSelect.removeAttribute('required'); // Remove required if 'Tidak' is selected
+                    jumlahHadirSelect.value = ''; // Clear value if hidden
+                }
+            }
+
+            // Initial check on page load
+            toggleJumlahHadir();
+
+            // Listen for changes on radio buttons
+            hadirYaRadio.addEventListener('change', toggleJumlahHadir);
+            hadirTidakRadio.addEventListener('change', toggleJumlahHadir);
+
+            // Optional: Add a confirmation message after submission (since we're submitting directly to GForm endpoint)
+            // Note: This form submits directly to Google Forms, so you won't get a direct success message
+            // from Google Forms itself. You might want to redirect to a custom thank you page or show a modal.
+            const rsvpForm = document.getElementById('rsvpForm');
+            rsvpForm.addEventListener('submit', function(event) {
+                // You can add a custom success message here before submitting
+                // For example, using a simple alert (though custom modals are better for user experience)
+                // alert('Terima kasih atas konfirmasi kehadiran Anda!');
+                // Or redirect to a custom thank you page
+                // window.location.href = 'URL_THANK_YOU_PAGE.html';
+                // If you want to show a message without redirecting, youd need to use fetch API
+                // to submit the form data asynchronously. For simplicity, direct POST is used here.
+            });
+        });
+    </script>
+</body>
+</html>
