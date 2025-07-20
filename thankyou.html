@@ -40,7 +40,7 @@
             line-height: 1.6;
             margin-bottom: 30px;
         }
-        .home-button {
+        .close-button { /* Renamed class for clarity */
             background-color: #3182ce;
             color: white;
             padding: 15px 30px;
@@ -49,10 +49,11 @@
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
-            text-decoration: none; /* Remove underline for link */
+            text-decoration: none; /* Remove underline for link if it were an <a> */
             transition: background-color 0.3s ease;
+            display: inline-block; /* Ensure it behaves like a block for padding/margin */
         }
-        .home-button:hover {
+        .close-button:hover {
             background-color: #2b6cb0;
         }
         @media (max-width: 600px) {
@@ -72,7 +73,13 @@
     <div class="card">
         <h1>Terima Kasih! 🎉</h1>
         <p>Konfirmasi kehadiran Anda telah berhasil kami terima. Kami sangat menantikan kehadiran Anda di hari bahagia kami, Sasa & Willy!</p>
-        <a href="https://willydipta.github.io/rsvp-sasa-willy/" class="home-button">Kembali ke Undangan</a>
+        <!-- Tombol untuk mencoba menutup halaman -->
+        <button class="close-button" onclick="window.close()">Tutup Halaman ini</button>
+        <!-- Catatan: window.close() hanya akan berfungsi jika halaman ini dibuka oleh skrip (misalnya dari window.open()). -->
+        <!-- Jika halaman ini dibuka langsung oleh pengguna, browser modern akan memblokir window.close() karena alasan keamanan. -->
+        <!-- Sebagai alternatif, Anda bisa memberikan instruksi kepada pengguna untuk menutup tab secara manual. -->
+        <!-- Atau, jika Anda ingin opsi kembali ke undangan, gunakan: -->
+        <!-- <a href="https://willydipta.github.io/rsvp-sasa-willy/" class="close-button">Kembali ke Undangan</a> -->
     </div>
 </body>
 </html>
