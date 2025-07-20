@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP Undangan Pernikahan</title>
-    <!-- Link Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for the form */
@@ -154,11 +152,9 @@
         <h2>Konfirmasi Kehadiran Undangan Pernikahan Sasa & Willy</h2>
         <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeBBerEMjCWv7iyKvEs91X2ZiM1c2971BVbK8sZRbWwUb6HGg/formResponse" method="POST">
 
-            <!-- Nama Lengkap -->
             <label for="namaLengkap">Nama Lengkap:</label>
             <input type="text" id="namaLengkap" name="entry.882493965" placeholder="Masukkan nama lengkap Anda" required>
 
-            <!-- Hadir atau Tidak -->
             <label>Apakah Anda akan Hadir?</label>
             <div class="radio-group">
                 <label>
@@ -171,7 +167,6 @@
                 </label>
             </div>
 
-            <!-- Jumlah Hadir (Tersembunyi Awalnya) -->
             <div id="jumlahHadirContainer" class="hidden-field">
                 <label for="jumlahHadir">Jumlah yang akan Hadir (termasuk Anda):</label>
                 <select id="jumlahHadir" name="entry.830815033">
@@ -181,11 +176,8 @@
                 </select>
             </div>
 
-            <!-- Pesan / Ucapan (Opsional) -->
-            <!-- Catatan: entry.YOUR_MESSAGE_ENTRY_ID perlu diganti dengan ID asli dari GForm Anda jika ada. -->
-            <!-- Jika tidak ada, Anda bisa menghapus field ini atau membiarkannya. -->
             <label for="pesanUcapan">Pesan / Ucapan (Opsional):</label>
-            <textarea id="pesanUcapan" name="entry.YOUR_MESSAGE_ENTRY_ID" rows="4" placeholder="Tulis pesan atau ucapan untuk kami..."></textarea>
+            <textarea id="pesanUcapan" name="entry.602733102" rows="4" placeholder="Tulis pesan atau ucapan untuk kami..."></textarea>
 
             <button type="submit">Kirim</button>
         </form>
@@ -196,16 +188,16 @@
             const hadirYaRadio = document.getElementById('hadirYa');
             const hadirTidakRadio = document.getElementById('hadirTidak');
             const jumlahHadirContainer = document.getElementById('jumlahHadirContainer');
-            const jumlahHadirSelect = document.getElementById('jumlahHadir'); // Changed to select element
+            const jumlahHadirSelect = document.getElementById('jumlahHadir');
 
             function toggleJumlahHadir() {
                 if (hadirYaRadio.checked) {
                     jumlahHadirContainer.style.display = 'block';
-                    jumlahHadirSelect.setAttribute('required', 'required'); // Make it required if 'Ya' is selected
+                    jumlahHadirSelect.setAttribute('required', 'required');
                 } else {
                     jumlahHadirContainer.style.display = 'none';
-                    jumlahHadirSelect.removeAttribute('required'); // Remove required if 'Tidak' is selected
-                    jumlahHadirSelect.value = ''; // Clear value if hidden
+                    jumlahHadirSelect.removeAttribute('required');
+                    jumlahHadirSelect.value = '';
                 }
             }
 
@@ -226,7 +218,7 @@
                 // alert('Terima kasih atas konfirmasi kehadiran Anda!');
                 // Or redirect to a custom thank you page
                 // window.location.href = 'URL_THANK_YOU_PAGE.html';
-                // If you want to show a message without redirecting, youd need to use fetch API
+                // If you want to show a message without redirecting, you'd need to use fetch API
                 // to submit the form data asynchronously. For simplicity, direct POST is used here.
             });
         });
